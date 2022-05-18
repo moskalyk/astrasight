@@ -1,4 +1,4 @@
-import react, {useEffect} from 'react'
+import react, {useEffect, useState} from 'react'
 import logo from './logo.svg';
 import './App.css';
 
@@ -415,10 +415,7 @@ start();
 
 const nemInstance = async () => {
   try {
-      worldID.init("world-id-container", {
-        enableTelemetry: true,
-        actionId: "0x330C8452C879506f313D1565702560435b0fee4C",
-      });
+
       const result = await worldID.enable();
       console.log("World ID verified succesfully:", result);
     } catch (failure) {
@@ -428,10 +425,23 @@ const nemInstance = async () => {
 }
 
 function App() {
+
+  const [state, setState] = useState(false)
+  useEffect(() => {
+
+    if(!state){
+      setState(true)
+      worldID.init("world-id-container", {
+        enableTelemetry: true,
+        actionId: "0x330C8452C879506f313D1565702560435b0fee4C",
+      });
+    }
+
+  })
   return (
     <div id="app">
-
-    <button onClick={nemInstance}>login</button>
+    <div id="world-id-container" />
+    <button onClick={() => nemInstance()}>login</button>
       
 <div className="tl"></div>
     </div>
