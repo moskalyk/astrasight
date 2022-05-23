@@ -5,19 +5,10 @@ import './App.css';
 import worldID from "@worldcoin/id"; // If you installed the JS package as a module
 
 import jQuery from 'jquery'
-
-document.addEventListener("DOMContentLoaded", async function () {
-  try {
-    const result = await worldID.enable();
-    console.log("World ID verified succesfully:", result);
-  } catch (failure) {
-    console.warn("World ID verification failed:", failure);
-    // Re-activate here so your end user can try again
-  }
-});
-
 const body=document.getElementsByTagName("body").item(0);
+
 const TP=2*Math.PI;
+
 const CSIZE=190;
 
 const ctx=(()=>{
@@ -31,13 +22,6 @@ const ctx=(()=>{
 })();
 ctx.translate(CSIZE,CSIZE);
 ctx.rotate(TP/4);
-
-
-// onresize=()=>{ 
-//   let D=Math.min(window.innerWidth,window.innerHeight)-40; 
-//   ctx.canvas.style.width=D+"px";
-//   ctx.canvas.style.height=D+"px";
-// }
 
 const getRandomInt=(min,max,low)=>{
   if (low) {
@@ -438,17 +422,12 @@ function Access(props) {
       })
       hack = true
     }
-    //   // worldID.init("world-id-container", {
-    //   //   enableTelemetry: true,
-    //   //   actionId: "0x330C8452C879506f313D1565702560435b0fee4C",
-    //   // });
   }, [])  
 
   return(
     <>
       <div id="app">
         <div id="world-id-container" />
-        <p>test</p>
         <button onClick={() => nemInstance(props.setLoggedIn)}>login</button>
       </div>
     </>
