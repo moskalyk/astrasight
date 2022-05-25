@@ -10,4 +10,4 @@ TODO
 
 # value add
 - crafting new lore and games to follow
-- infinite velocity of money in the ecosystem of time-as-a-service wellbeing
+- hypothesis of infinite velocity of money in the ecosystem of time-as-a-service for community wellbeing
